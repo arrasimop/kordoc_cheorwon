@@ -11,7 +11,8 @@
  */
 
 import JSZip from "jszip"
-import { createXmlParser, findChildByLocalName } from "./parser-shared.js"
+import { DOMParser } from "@xmldom/xmldom"
+import { findChildByLocalName } from "../shared/xml.js"
 import { toArrayBuffer } from "../utils.js"
 import { normalizeAnchor, normalizeRowAnchor } from "./gen-profile.js"
 import type { FormatProfile, TableProfile, CellProfile, BorderFillDef, BorderDef, CharPrDef } from "./gen-profile.js"
@@ -257,7 +258,7 @@ function pick<T>(map: Map<string, T>, keys: Set<string>): Record<string, T> {
 export async function hwpxToProfile(input: ArrayBuffer | Buffer): Promise<FormatProfile> {
   const buf = input instanceof ArrayBuffer ? input : toArrayBuffer(input)
   const zip = await JSZip.loadAsync(buf)
-  const parser = createXmlParser()
+  const parser = new DOMParser()
 
   const headerFile = zip.file("Contents/header.xml") ?? zip.file(/[Hh]eader\.xml$/)?.[0]
   let headerXml = "<root/>"

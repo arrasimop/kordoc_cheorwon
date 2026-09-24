@@ -9,9 +9,7 @@
  * 최우선 — 프로필 미매칭 셀만 기본/공문서 문법으로 채운다.
  */
 
-import { parseHtmlTable, htmlCellInnerToLines, splitCellByTopLevelTables, type HtmlRowInfo } from "../roundtrip/markdown-units.js"
-import { MAX_COLS, MAX_ROWS } from "../table/builder.js"
-import { clampSpan } from "./parser-shared.js"
+import { parseHtmlTable, htmlCellInnerToLines, splitCellByTopLevelTables, clampSpan, MAX_COLS, MAX_ROWS, type HtmlRowInfo } from "./gen-html-table.js"
 import { CHAR_NORMAL, CHAR_BOLD, CHAR_TABLE_HEADER, PARA_NORMAL, escapeXml, escapeTextXml, type ResolvedTheme } from "./gen-ids.js"
 import { generateRuns } from "./md-runs.js"
 import { measureTextWidth } from "./text-metrics.js"
