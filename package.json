@@ -36,6 +36,9 @@
     "markdown"
   ],
   "author": "chrisryugj",
+  "contributors": [
+    "galadriel"
+  ],
   "license": "MIT",
   "engines": {
     "node": ">=18"
